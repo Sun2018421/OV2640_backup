@@ -22,7 +22,6 @@
 #include "piclib.h"	
 #include "string.h"		
 #include "math.h"
-#include "app_x-cube-ai.h"
 /************************************************
  ALIENTEK 阿波罗STM32F7开发板 实验46
  照相机实验-HAL库函数版
@@ -38,60 +37,49 @@ u8 ovx_mode=0;							//bit0:0,RGB565模式;1,JPEG模式
 u16 curline=0;							//摄像头输出数据,当前行编号
 u16 yoffset=0;							//y方向的偏移量
 
-#define jpeg_buf_size   4*1024*1024		//定义JPEG数据缓存jpeg_buf的大小(4M字节)
-#define jpeg_line_size	2*1024			//定义DMA接收数据时,一行数据的最大值
-#define output_width 32
-#define output_height 40
+#define output_width 28
+#define output_height 28
 
-u32 *dcmi_line_buf[2];					//RGB屏时,摄像头采用一行一行读取,定义行缓存  
-u32 *jpeg_data_buf;						//JPEG数据缓存buf 
+
+u16 dcmi_line_buf0 [output_width];
+u16 dcmi_line_buf1 [output_width];
+u16 picture_data_buf [output_width*output_height];
+
 
 volatile u32 jpeg_data_len=0; 			//buf中的JPEG有效数据长度 
 volatile u8 jpeg_data_ok=0;				//JPEG数据采集完成标志 
 volatile u8 currentline = 0;
 volatile u8 one_shot_ok = 0;
 
+void jpeg_data_process(void){
+	one_shot_ok = 1;
+	curline = 0;
+//	delay_ms(100);
+//	one_shot_ok = 0;
+}
 
 //RGB屏数据接收回调函数
 void rgblcd_dcmi_rx_callback(void)
 {  
+	u16 * datapointer ;
 	u16 *pbuf;
+	u16 i ;
 	if(DMADMCI_Handler.Instance->CR&(1<<19))//DMA使用buf1,读取buf0
 	{ 
-		pbuf=(u16*)dcmi_line_buf[0]; 
+		pbuf=(u16*)dcmi_line_buf0; 
 	}else 						//DMA使用buf0,读取buf1
 	{
-		pbuf=(u16*)dcmi_line_buf[1]; 
+		pbuf=(u16*)dcmi_line_buf1; 
 	} 	
-	LTDC_Color_Fill(0,curline,lcddev.width-1,curline,pbuf);//DM2D填充 
+		datapointer = (u16*)picture_data_buf;
+	if(one_shot_ok == 0){
+		for(i=0; i <output_width ; i++){
+			 datapointer[curline*output_width + i]= pbuf[i];
+		}
+	}
+//	printf("currline %d\r\n",curline);
+	LTDC_Color_Fill(0,curline,output_width-1,curline,pbuf);//DM2D填充 
 	if(curline<lcddev.height)curline++;
-	if(bmp_request==1&&curline==(lcddev.height-1))//有bmp拍照请求,关闭DCMI
-	{
-		DCMI_Stop();	//停止DCMI
-		bmp_request=0;	//标记请求处理完成.
-	}
-}
-
-void out_dcmi_rx_callback(void){
-	u16 *pbuf;
-	u16 * databuf =(u16*)jpeg_data_buf;
-	databuf = databuf+currentline*output_width;
-	u8 i ;
-	
-	if(DMADMCI_Handler.Instance->CR&(1<<19))
-	{
-		pbuf = (u16*)dcmi_line_buf[0];
-	}
-	else {
-		pbuf = (u16*)dcmi_line_buf[1];
-	}
-	
-	for(i=0;i<output_width; i++){
-		databuf[i] = pbuf[i];
-	}
-	LED0_Toggle;
-	currentline++;
-	
 }
 
 //切换为OV2640模式
@@ -143,9 +131,9 @@ void camera_new_pathname(u8 *pname,u8 mode)
 
 int main(void)
 {
-	u8 res;							 
-	u8 *pname;					//带路径的文件名 	   
-	u8 i , j;						 
+	u8 res;							   
+	u8 i , j;					
+	u8 fileout = 1;
 	u16 *ouputpointer;
   Write_Through();                //开启强制透写！
   Cache_Enable();                 //打开L1-Cache
@@ -154,7 +142,7 @@ int main(void)
   Stm32_Clock_Init(432,25,2,9);   //设置时钟,216Mhz 
   delay_init(216);                //延时初始化
   uart_init(115200);		        //串口初始化
-	printf("hello world\r\n");
+//	printf("hello world\r\n");
 	
   usmart_dev.init(108); 		    //初始化USMART
   LED_Init();                     //初始化LED 
@@ -196,56 +184,46 @@ int main(void)
 		Show_Str(30,190,240,16,"拍照功能将不可用!",16,0);
 		delay_ms(200);				 	
 	}
-  dcmi_line_buf[0]=mymalloc(SRAMIN,jpeg_line_size*4);	//为jpeg dma接收申请内存	
-	dcmi_line_buf[1]=mymalloc(SRAMIN,jpeg_line_size*4);	//为jpeg dma接收申请内存	
-	jpeg_data_buf=mymalloc(SRAMEX,jpeg_buf_size);		//为jpeg文件申请内存(最大4MB)
- 	pname=mymalloc(SRAMIN,30);//为带路径的文件名分配30个字节的内存	 
- 	while(pname==NULL||!dcmi_line_buf[0]||!dcmi_line_buf[1]||!jpeg_data_buf)	//内存分配出错
- 	{	    
-		Show_Str(30,190,240,16,"内存分配失败!",16,0);
-		delay_ms(200);				  
-		LCD_Fill(30,190,240,146,WHITE);//清除显示	     
-		delay_ms(200);				  
-	}   
+
 	while(OV2640_Init())//初始化OV2640
 	{
 		Show_Str(30,190,240,16,"OV2640 错误!",16,0);
 		delay_ms(200);
-	    LCD_Fill(30,190,239,206,WHITE);
+	  LCD_Fill(30,190,239,206,WHITE);
 		delay_ms(200);
 	}
     Show_Str(30,210,230,16,"OV2640 正常",16,0); 
 	//自动对焦初始化
+	DCMI_Init();			//DCMI配置
 	OV2640_RGB565_Mode();	//RGB565模式 
 	OV2640_Light_Mode(0);	//自动模式
 	OV2640_Color_Saturation(3);//色彩饱和度0
 	OV2640_Brightness(4);	//亮度0
 	OV2640_Contrast(3);		//对比度0
-	OV2640_Special_Effects(2); //设置成黑白
-	DCMI_Init();			//DCMI配置
+	//OV2640_Special_Effects(2); //设置成黑白
+	OV2640_ImageWin_Set(0,0,800,600); // 800 = 40 * 20 , 576 = 32 *18
+	OV2640_OutSize_Set(output_width,output_height); //缩放
+	
 
-	dcmi_rx_callback=out_dcmi_rx_callback;
-	DCMI_DMA_Init((u32)dcmi_line_buf[0],(u32)dcmi_line_buf[1],output_width/2,DMA_MDATAALIGN_HALFWORD,DMA_MINC_ENABLE);//DCMI DMA配置  
+	dcmi_rx_callback=rgblcd_dcmi_rx_callback;
+	DCMI_DMA_Init((u32)dcmi_line_buf0,(u32)dcmi_line_buf1,output_width/2,DMA_MDATAALIGN_HALFWORD,DMA_MINC_ENABLE);//DCMI DMA配置  
 	
  
 	currentline = 0 ;
 	one_shot_ok = 0;
-	OV2640_ImageWin_Set(0,0,1600,1184); // 1600 = 40 * 40 , 1184 = 32 *37
-	printf("ov2640_outsize_set_ret:%d \r\n",OV2640_OutSize_Set(output_width,output_height));	//满屏缩放显示
-	LCD_Clear(BLACK);
+
+	LCD_Clear(WHITE);
 	DCMI_Start(); 			//启动传输 
-  while(one_shot_ok!=1)
-	{
-				delay_ms(10);
-	}	
-	ouputpointer = (u16*)jpeg_data_buf;
-	for(i=0;i < output_height ; i++){
-			for(j=0 ; j < output_width ; j++){
-				printf("%x ",ouputpointer[i*output_width+j]);
+	while(1){
+		if((one_shot_ok == 1) && (fileout==1)){
+		ouputpointer = (u16*)picture_data_buf;
+			for(i=0;i < output_height ; i++){
+					for(j=0 ; j < output_width ; j++){
+						printf("%x ",ouputpointer[i*output_width+j]);
+					}
+			printf("\r\n");
 			}
-	printf("\r\n");
-			
+			fileout = 0;
+		}
 	}
-	printf("over");
-	
 }

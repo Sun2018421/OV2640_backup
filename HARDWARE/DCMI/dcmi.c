@@ -157,6 +157,7 @@ void DCMI_IRQHandler(void)
 void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
 {
 	//jpeg_data_process();//jpeg数据处理
+	jpeg_data_process();
 	LED1_Toggle;
 	ov_frame++; 
     //重新使能帧中断,因为HAL_DCMI_IRQHandler()函数会关闭帧中断
@@ -164,7 +165,7 @@ void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
 	
 	///
 	one_shot_ok = 1;
-	DCMI_Stop();
+	//DCMI_Stop();
 }
 
 void (*dcmi_rx_callback)(void);//DCMI DMA接收回调函数
@@ -174,7 +175,7 @@ void DMA2_Stream1_IRQHandler(void)
     if(__HAL_DMA_GET_FLAG(&DMADMCI_Handler,DMA_FLAG_TCIF1_5)!=RESET)//DMA传输完成
     {
         __HAL_DMA_CLEAR_FLAG(&DMADMCI_Handler,DMA_FLAG_TCIF1_5);//清除DMA传输完成中断标志位
-				
+				LED0_Toggle;
         dcmi_rx_callback();	//执行摄像头接收回调函数,读取数据等操作在这里面处理
     } 
 }

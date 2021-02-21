@@ -109,16 +109,3 @@
 ..\obj\main.o: ..\PICTURE\gif.h
 ..\obj\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
-..\obj\main.o: ..\X-CUBE-AI\App\app_x-cube-ai.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\ai_platform.h
-..\obj\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
-..\obj\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\inttypes.h
-..\obj\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
-..\obj\main.o: ..\X-CUBE-AI\App\network.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\ai_platform_interface.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\datatypes_network.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\ai_datatypes_format.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\ai_datatypes_defines.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\core_datatypes.h
-..\obj\main.o: ..\Middlewares\ST\AI\Inc\formats_list.h
-..\obj\main.o: ..\X-CUBE-AI\App\network_data.h

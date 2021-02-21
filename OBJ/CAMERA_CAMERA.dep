@@ -1,5 +1,5 @@
 Dependencies for Project 'CAMERA', Target 'CAMERA': (DO NOT MODIFY !)
-F (.\main.c)(0x602F8EDA)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x60325A34)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x57B2B6AD)
 I (..\USER\stm32f7xx.h)(0x57A95187)
 I (..\USER\stm32f767xx.h)(0x57A95187)
@@ -108,19 +108,6 @@ I (..\PICTURE\integer.h)(0x57A95187)
 I (..\PICTURE\gif.h)(0x57A95187)
 I (D:\keil5\ARM\ARMCC\include\string.h)(0x5F63878A)
 I (D:\keil5\ARM\ARMCC\include\math.h)(0x5F63877C)
-I (..\X-CUBE-AI\App\app_x-cube-ai.h)(0x600ED620)
-I (..\Middlewares\ST\AI\Inc\ai_platform.h)(0x600ED4D4)
-I (D:\keil5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
-I (D:\keil5\ARM\ARMCC\include\inttypes.h)(0x5F63877C)
-I (D:\keil5\ARM\ARMCC\include\stdbool.h)(0x5F63877C)
-I (..\X-CUBE-AI\App\network.h)(0x600ED626)
-I (..\Middlewares\ST\AI\Inc\ai_platform_interface.h)(0x600ED4D4)
-I (..\Middlewares\ST\AI\Inc\datatypes_network.h)(0x600ED4D4)
-I (..\Middlewares\ST\AI\Inc\ai_datatypes_format.h)(0x600ED4D4)
-I (..\Middlewares\ST\AI\Inc\ai_datatypes_defines.h)(0x600ED4D4)
-I (..\Middlewares\ST\AI\Inc\core_datatypes.h)(0x600ED4D4)
-I (..\Middlewares\ST\AI\Inc\formats_list.h)(0x600ED4D4)
-I (..\X-CUBE-AI\App\network_data.h)(0x600ED626)
 F (.\stm32f7xx_it.c)(0x57A95187)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\stm32f7xx_it.o --omf_browse ..\obj\stm32f7xx_it.crf --depend ..\obj\stm32f7xx_it.d)
 I (main.h)(0x57A95187)
 I (..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x57A95187)
@@ -3406,7 +3393,7 @@ I (..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_jpeg.h)(0x57A95187)
 I (..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_mdios.h)(0x57A95187)
 I (..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x57A95187)
 I (..\SYSTEM\delay\delay.h)(0x57A95187)
-F (..\HARDWARE\DCMI\dcmi.c)(0x602F6FBE)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\dcmi.o --omf_browse ..\obj\dcmi.crf --depend ..\obj\dcmi.d)
+F (..\HARDWARE\DCMI\dcmi.c)(0x6031FFF1)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\dcmi.o --omf_browse ..\obj\dcmi.crf --depend ..\obj\dcmi.d)
 I (..\SYSTEM\sys\sys.h)(0x57B2B6AD)
 I (..\USER\stm32f7xx.h)(0x57A95187)
 I (..\USER\stm32f767xx.h)(0x57A95187)
@@ -3803,7 +3790,7 @@ I (..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_mdios.h)(0x57A95187)
 I (..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h)(0x57A95187)
 I (..\HARDWARE\LED\led.h)(0x57A95187)
 I (..\SYSTEM\delay\delay.h)(0x57A95187)
-F (..\HARDWARE\OV2640\ov2640.c)(0x57E259DD)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\ov2640.o --omf_browse ..\obj\ov2640.crf --depend ..\obj\ov2640.d)
+F (..\HARDWARE\OV2640\ov2640.c)(0x6031BA47)(--c99 -c --cpu Cortex-M7.fp.sp -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F7xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\SDMMC -I ..\HARDWARE\NAND -I ..\HARDWARE\QSPI -I ..\HARDWARE\W25QXX -I ..\HARDWARE\DCMI -I ..\HARDWARE\OV2640 -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\TIMER -I ..\HARDWARE\MPU -I ..\USMART -I ..\MALLOC -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\X-CUBE-AI\App -I ..\Middlewares\ST\AI\Inc -I ..\X-CUBE-AI-I.\RTE\_CAMERA-ID:\keil5_base\Keil\STM32F7xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F767xx -DSTM32F767xx -DUSE_HAL_DRIVER-o ..\obj\ov2640.o --omf_browse ..\obj\ov2640.crf --depend ..\obj\ov2640.d)
 I (..\SYSTEM\sys\sys.h)(0x57B2B6AD)
 I (..\USER\stm32f7xx.h)(0x57A95187)
 I (..\USER\stm32f767xx.h)(0x57A95187)
